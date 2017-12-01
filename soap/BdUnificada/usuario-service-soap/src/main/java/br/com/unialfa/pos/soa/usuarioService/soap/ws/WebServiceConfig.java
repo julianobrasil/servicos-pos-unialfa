@@ -47,12 +47,10 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		CommonsXsdSchemaCollection xsds = new CommonsXsdSchemaCollection(new ClassPathResource("schemas/main.xsd"));
 		xsds.setInline(true);
 		return xsds;
-//		return new SimpleXsdSchema(new ClassPathResource("schemas/main.xsd"));
 	}
 	
 	  @Override
 	  public void addInterceptors(List<EndpointInterceptor> interceptors) {
-	    // register the CustomEndpointInterceptor
 	    interceptors.add(new LogHttpHeaderEndpointInterceptor());
 	  }
 	
