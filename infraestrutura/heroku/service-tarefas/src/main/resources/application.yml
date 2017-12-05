@@ -2,7 +2,7 @@ server:
   port: 9000
 spring:
   jpa:
-    database-platform: org.hibernate.dialect.PostgresSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
       naming:
