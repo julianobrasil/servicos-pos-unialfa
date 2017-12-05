@@ -2,19 +2,19 @@ server:
   port: 9000
 spring:
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.PostgresSQLDialect
     hibernate:
       ddl-auto: update
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
   datasource:
-    url: jdbc:mysql://localhost:3306/pos_database_tarefa?createDatabaseIfNotExist=true
-    username: pos
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:postgres://ec2-54-243-211-197.compute-1.amazonaws.com:5432/d36f7dc63oe6hr
+    username: vylqimmbpazgwq
+    password: 21557cda0285f96343e3d1efbd77bb6384473a6bc842fc4776b9465091ea58f4
+    driver-class-name: org.postgresql.Driver
     
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://eureka-unialfa.herokuapp.com/eureka/
     healthcheck: true
