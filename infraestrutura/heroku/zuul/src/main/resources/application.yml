@@ -9,5 +9,5 @@ zuul:
 eureka:
   client:
     service-url:
-      defaultZone: https://eureka-unialfa.herokuapp.com:8761/eureka/
+      defaultZone: https://eureka-unialfa.herokuapp.com/eureka/
     healthcheck: true
