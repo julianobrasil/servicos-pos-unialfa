@@ -1,5 +1,5 @@
-export const baseUrlTarefas = 'https://zuul-unialfa.heroku.com/tarefas';
-export const baseUrlUsuarios = 'https://zuul-unialfa.heroku.com/usuarios';
+export const baseUrlTarefas = 'https://zuul-unialfa.herokuapp.com/tarefas';
+export const baseUrlUsuarios = 'https://zuul-unialfa.herokuapp.com/usuarios';
 
 // api de usuários
 export const usuariosAll_Get = '/usuarios/all';
