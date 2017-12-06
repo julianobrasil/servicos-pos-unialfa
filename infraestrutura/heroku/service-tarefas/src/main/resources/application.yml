@@ -16,11 +16,6 @@ spring:
 eureka:
   instance:
     hostname: servico-tarefas-unialfa.herokuapp.com
-    secure-port-enabled: true
-    non-secure-port-enabled: false
-    statusPageUrl: https://${eureka.instance.hostname}/info
-    healthCheckUrl: https://${eureka.instance.hostname}/health
-    homePageUrl: https://${eureka.instance.hostname}/
   client:
     service-url:
       defaultZone: https://eureka-unialfa.herokuapp.com/eureka/
