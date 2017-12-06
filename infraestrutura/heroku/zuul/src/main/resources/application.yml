@@ -13,3 +13,5 @@ eureka:
     service-url:
       defaultZone: https://eureka-unialfa.herokuapp.com/eureka/
     healthcheck: true
+ribbon:
+  IsSecure: true
