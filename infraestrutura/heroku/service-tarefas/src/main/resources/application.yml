@@ -15,7 +15,7 @@ spring:
     
 eureka:
   instance:
-    hostname: service-tarefas-unialfa.herokuapp.com
+    hostname: servico-tarefas-unialfa.herokuapp.com
     secure-port-enabled: true
     non-secure-port-enabled: false
     statusPageUrl: https://${eureka.instance.hostname}/info
