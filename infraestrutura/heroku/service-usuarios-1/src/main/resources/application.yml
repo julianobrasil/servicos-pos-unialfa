@@ -15,6 +15,7 @@ spring:
     
 eureka:
   instance:
+    hostname: service-usuarios-1-unialfa.herokuapp.com
     secure-port-enabled: true
     non-secure-port-enabled: false
     statusPageUrl: https://${eureka.instance.hostname}/info

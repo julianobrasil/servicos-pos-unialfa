@@ -8,6 +8,7 @@ zuul:
       serviceId: tarefas
 eureka:
   instance:
+    hostname: zuul-unialfa.herokuapp.com
     secure-port-enabled: true
     non-secure-port-enabled: false
     statusPageUrl: https://${eureka.instance.hostname}/info
