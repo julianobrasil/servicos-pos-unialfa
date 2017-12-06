@@ -45,9 +45,9 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.1.4.jre7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
