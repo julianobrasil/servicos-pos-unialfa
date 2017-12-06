@@ -14,6 +14,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     
 eureka:
+  instance:
+    securePortEnabled: true
   client:
     service-url:
       defaultZone: https://eureka-unialfa.herokuapp.com/eureka/
