@@ -15,3 +15,11 @@ eureka:
     healthcheck: true
 ribbon:
   IsSecure: true
+# Increase the Hystrix timeout to 60s (globally)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
