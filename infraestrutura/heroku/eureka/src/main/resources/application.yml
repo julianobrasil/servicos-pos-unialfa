@@ -2,7 +2,7 @@ server:
   port: 8761
 eureka:
   instance:
-    hostname: localhost
+    hostname: eureka-unialfa.herokuapp.com
     secure-port-enabled: true
     non-secure-port-enabled: false
     statusPageUrl: https://${eureka.instance.hostname}/info
@@ -15,7 +15,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     serviceUrl:
-      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: https://${eureka.instance.hostname}/eureka/
     healthcheck: true
 logging:
   level:
