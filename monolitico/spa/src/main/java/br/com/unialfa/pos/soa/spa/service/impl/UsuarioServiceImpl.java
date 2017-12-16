@@ -45,11 +45,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Transactional
 	public void removeUsuario(Long id) {
 		List<UsuarioTarefa> uts = this.usuarioTarefaRepository.findByUsuarioId(id);
-
 		this.usuarioTarefaRepository.delete(uts);
 		
 		List<Comentario> comentarios = this.comentarioRepository.findByAutorId(id);
-		
 		this.comentarioRepository.delete(comentarios);
 
 		this.usuarioRepository.delete(id);

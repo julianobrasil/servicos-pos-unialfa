@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.unialfa.pos.soa.spa.core.model.entity.Tarefa;
 import br.com.unialfa.pos.soa.spa.core.model.entity.Usuario;
+import br.com.unialfa.pos.soa.spa.core.to.ComentarioTo;
 import br.com.unialfa.pos.soa.spa.core.to.UsuarioTarefaTo;
 
 public interface ControllerPrincipal {
@@ -42,5 +43,14 @@ public interface ControllerPrincipal {
 	
 	@GetMapping("/spa/obtem-usuarios-tarefa/{id}")
 	public ModelAndView spaObtemUsuarioDaTarefaTarefa(@PathVariable("id") Long id);
+	
+	@PostMapping("/spa/add-comentario")
+	public String spaAddComentario(@ModelAttribute ComentarioTo comentario);
+	
+	@GetMapping("/spa/delete-comentario/{id}")
+	public String spaDeleteComentario(@PathVariable("id") Long id);
+	
+	@GetMapping("/spa/edit-comentario/{id}")
+	public ModelAndView spaEditComentario(@PathVariable("id") Long id);
 
 }

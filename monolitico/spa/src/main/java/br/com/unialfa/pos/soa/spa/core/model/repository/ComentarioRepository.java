@@ -12,4 +12,6 @@ public interface ComentarioRepository extends JpaRepository<Comentario,Long> {
 	
 	List<Comentario> findByTarefaId(Long id);
 
+	List<Comentario> findByOrderByDataDesc();
+	
 }
