@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.unialfa.pos.soa.spa.controller.ControllerPrincipal;
+import br.com.unialfa.pos.soa.spa.core.model.entity.Comentario;
 import br.com.unialfa.pos.soa.spa.core.model.entity.Tarefa;
 import br.com.unialfa.pos.soa.spa.core.model.entity.Usuario;
 import br.com.unialfa.pos.soa.spa.core.model.entity.UsuarioTarefa;
+import br.com.unialfa.pos.soa.spa.core.to.ComentarioTo;
 import br.com.unialfa.pos.soa.spa.core.to.UsuarioTarefaTo;
 import br.com.unialfa.pos.soa.spa.helper.Constante;
+import br.com.unialfa.pos.soa.spa.service.ComentarioService;
 import br.com.unialfa.pos.soa.spa.service.TarefaService;
 import br.com.unialfa.pos.soa.spa.service.UsuarioService;
 
@@ -31,6 +34,9 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 
 	@Autowired
 	TarefaService tarefaService;
+	
+	@Autowired
+	ComentarioService comentarioService;
 	
 	String destino = Constante.USUARIOS;
 	
@@ -45,6 +51,7 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 			mv.addObject("usuario", new Usuario());
 			mv.addObject("tarefa", new Tarefa());
 			mv.addObject("usuarioTarefa", new UsuarioTarefaTo());
+			mv.addObject("comentario", new ComentarioTo());
 		}
 
 		List<Usuario> users = this.usuarioService.obtemTodosOsUsuarios();
@@ -52,6 +59,9 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 
 		List<Tarefa> tasks = this.tarefaService.obtemTodasAsTarefas();
 		mv.addObject("tarefas", tasks);
+
+		List<Comentario> comentarios = this.comentarioService.obtemTodosOsComentarios();
+		mv.addObject("comentarios", comentarios);
 
 	}
 
@@ -61,6 +71,7 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 			mv.addObject("usuario", new Usuario());
 			mv.addObject("tarefa", new Tarefa());
 			mv.addObject("usuarioTarefa", new UsuarioTarefaTo());
+			mv.addObject("comentario", new ComentarioTo());
 		}
 
 		List<Usuario> users = this.usuarioService.obtemTodosOsUsuarios();
@@ -73,6 +84,9 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 			List<UsuarioTarefa> uts = this.tarefaService.obtemTodasAsAlocacoes(idTarefaSelecionada);
 			mv.addObject("usuariosTarefas", uts);
 		}
+
+		List<Comentario> comentarios = this.comentarioService.obtemTodosOsComentarios();
+		mv.addObject("comentarios", comentarios);
 	}
 
 	@Override
@@ -119,6 +133,8 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 		mv.addObject("tarefa", new Tarefa());
 		
 		mv.addObject("usuarioTarefa", new UsuarioTarefaTo());
+		
+		mv.addObject("comentario", new ComentarioTo());
 
 		this.carregaObjetosDaTela(mv, false);
 
@@ -165,6 +181,8 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 		mv.addObject("usuario", new Usuario());
 
 		mv.addObject("usuarioTarefa", new UsuarioTarefaTo());
+		
+		mv.addObject("comentario", new ComentarioTo());
 
 		this.carregaObjetosDaTela(mv, false);
 
@@ -231,6 +249,60 @@ public class ControllerPrincipalImpl implements ControllerPrincipal {
 		mv.addObject("abaAtiva", Constante.TAREFAS_ALOCADAS);
 		
 		this.destino = Constante.TAREFAS_ALOCADAS;
+
+		return mv;
+	}
+
+	@Override
+	public String spaAddComentario(@ModelAttribute ComentarioTo comentario) {
+
+		try {
+			this.comentarioService.gravaComentario(comentario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		this.destino = Constante.COMENTARIOS;
+
+		return "redirect:/spa";
+	}
+
+	@Override
+	public String spaDeleteComentario(@PathVariable("id") Long id) {
+
+		try {
+			this.comentarioService.removeComentario(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		this.destino = Constante.COMENTARIOS;
+
+		return "redirect:/spa";
+	}
+
+	@Override
+	public ModelAndView spaEditComentario(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("spa");
+
+		mv.addObject("tarefa", new Tarefa());
+
+		mv.addObject("usuario", new Usuario());
+
+		mv.addObject("usuarioTarefa", new UsuarioTarefaTo());
+		
+		Comentario comentario = this.comentarioService.obtemComentarioPorId(id);
+		ComentarioTo comentarioTo = new ComentarioTo();
+		comentarioTo.setId(comentario.getId());
+		comentarioTo.setCorpo(comentario.getCorpo());
+		comentarioTo.setData(comentario.getData());
+		comentarioTo.setIdAutor(comentario.getAutor().getId());
+		comentarioTo.setIdTarefa(comentario.getTarefa().getId());
+		mv.addObject("comentario", comentarioTo);
+
+		this.carregaObjetosDaTela(mv, false);
+
+		mv.addObject("abaAtiva", Constante.COMENTARIOS);
 
 		return mv;
 	}

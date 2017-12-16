@@ -16,10 +16,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Comentario extends AbstractEntity {
-	@Column
+	@Column(nullable = false)
 	private String corpo;
 
-	@Column
+	@Column(nullable = false)
 	private Date data;
 
 	@OneToOne

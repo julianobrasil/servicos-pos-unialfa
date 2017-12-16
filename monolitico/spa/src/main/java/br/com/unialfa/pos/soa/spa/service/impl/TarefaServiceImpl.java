@@ -50,16 +50,13 @@ public class TarefaServiceImpl implements TarefaService {
 	@Override
 	@Transactional
 	public void removeTarefa(Long id) {
-
 		List<UsuarioTarefa> uts = this.usuarioTarefaRepository.findByTarefaId(id);
-
 		this.usuarioTarefaRepository.delete(uts);
-
-		this.tarefaRepository.delete(id);
-
+		
 		List<Comentario> comentarios = this.comentarioRepository.findByTarefaId(id);
-
 		this.comentarioRepository.delete(comentarios);
+		
+		this.tarefaRepository.delete(id);
 	}
 
 	@Override
