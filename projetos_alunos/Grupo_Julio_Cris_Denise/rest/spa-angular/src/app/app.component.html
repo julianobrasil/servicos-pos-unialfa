@@ -1,0 +1,46 @@
+<mat-toolbar class="app-toolbar">
+
+</mat-toolbar>
+
+<div fxLayout="row" fxLayoutAlign="center start" class="app-content">
+  <div fxFlex="1024px">
+    <mat-tab-group [style.display]="_tarefaSelecionada == null ? 'block': 'none' ">
+      <mat-tab label="Usuários">
+
+        <div class="app-tab-content">
+          <app-usuarios (usuariosChanged)="_usuarios=$event"></app-usuarios>
+        </div>
+
+      </mat-tab>
+
+      <mat-tab label="Tarefas">
+
+        <div class="app-tab-content">
+          <app-tarefas (tarefasChanged)="_tarefas=$event" (tarefaSelecionadaChanged)="_tarefaSelecionada=$event"></app-tarefas>
+        </div>
+
+      </mat-tab>
+
+      <mat-tab label="Alocação">
+
+        <div class="app-tab-content">
+          <app-alocacao [tarefas]="_tarefas" [usuarios]="_usuarios"></app-alocacao>
+        </div>
+        
+      </mat-tab>
+
+     
+    </mat-tab-group>
+    <mat-tab-group [style.display]="_tarefaSelecionada != null ? 'block': 'none' " >
+     
+
+      <mat-tab label="Comentario">
+
+        <div class="app-tab-content" >
+          <app-comentario [tarefaSelecionada]="_tarefaSelecionada" (tarefaSelecionadaChanged)="_tarefaSelecionada=$event"></app-comentario>
+        </div>
+        
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
