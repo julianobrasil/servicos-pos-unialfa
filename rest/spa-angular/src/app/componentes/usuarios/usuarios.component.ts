@@ -11,12 +11,10 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { merge } from 'rxjs/observable/merge';
 import { of as observableOf } from 'rxjs/observable/of';
-import {
-  catchError,
-  map,
-  startWith,
-  switchMap
-} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators/catchError';
+import { map } from 'rxjs/operators/map';
+import { startWith } from 'rxjs/operators/startWith';
+import { switchMap } from 'rxjs/operators/switchMap';
 
 import { UsuarioService } from '../../core/servicos/usuario.service';
 
@@ -107,7 +105,7 @@ export class UsuariosComponent implements AfterViewInit {
       this._outerForm.patchValue(this._usuario);
     } else {
       this._elementToFocus.nativeElement.focus();
-      setTimeout(() =>  this._outerFormDirective.resetForm());
+      setTimeout(() => this._outerFormDirective.resetForm());
     }
   }
 

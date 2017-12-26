@@ -19,12 +19,10 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { merge } from 'rxjs/observable/merge';
 import { of as observableOf } from 'rxjs/observable/of';
-import {
-  catchError,
-  map,
-  startWith,
-  switchMap
-} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators/catchError';
+import { map } from 'rxjs/operators/map';
+import { startWith } from 'rxjs/operators/startWith';
+import { switchMap } from 'rxjs/operators/switchMap';
 
 
 import { AlocacaoDeTarefasService } from '../../core/servicos/alocacao-de-tarefas.service';

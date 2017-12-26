@@ -9,12 +9,10 @@ import {
   ViewChild, 
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
-import {
-  MatTableDataSource,
-  MatPaginator,
-  MatSort,
-  PageEvent
-} from '@angular/material';
+import { catchError } from 'rxjs/operators/catchError';
+import { map } from 'rxjs/operators/map';
+import { startWith } from 'rxjs/operators/startWith';
+import { switchMap } from 'rxjs/operators/switchMap';
 
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
