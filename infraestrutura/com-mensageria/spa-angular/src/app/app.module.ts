@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { StompService } from 'ng2-stomp-service';
+
 import { registerLocaleData } from '@angular/common';
 
 import localePTBR from '@angular/common/locales/pt';
@@ -42,7 +44,8 @@ import { AlocacaoComponent } from './componentes/alocacao/alocacao.component';
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
-    UsuarioWsService
+    UsuarioWsService,
+    StompService
   ],
   bootstrap: [AppComponent]
 })
