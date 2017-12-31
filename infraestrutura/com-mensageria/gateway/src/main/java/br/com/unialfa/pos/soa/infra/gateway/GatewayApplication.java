@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class Gateway2Application {
+public class GatewayApplication {
 
 	@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder) {
@@ -27,7 +27,7 @@ public class Gateway2Application {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Gateway2Application.class, args);
+		SpringApplication.run(GatewayApplication.class, args);
 	}
 
 }
