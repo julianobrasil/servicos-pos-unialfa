@@ -41,7 +41,7 @@ public class UsuarioTarefaControllerImpl implements UsuarioTarefaController {
 		try {
 			List<UsuarioTarefa> uts = this.usuarioTarefaRepository.findByRemoteUsuarioId(usuarioId);
 
-			this.usuarioTarefaRepository.delete(uts);
+			this.usuarioTarefaRepository.deleteAll(uts);
 
 			return ResponseEntity.ok(true);
 		} catch (Exception e) {

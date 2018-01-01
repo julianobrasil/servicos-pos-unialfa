@@ -57,18 +57,18 @@ public class TarefaServiceImpl implements TarefaService {
 
 		List<UsuarioTarefa> uts = this.usuarioTarefaRepository.findByTarefaId(id);
 
-		this.usuarioTarefaRepository.delete(uts);
+		this.usuarioTarefaRepository.deleteAll(uts);
 
-		this.tarefaRepository.delete(id);
+		this.tarefaRepository.deleteById(id);
 
 		List<Comentario> comentarios = this.comentarioRepository.findByTarefaId(id);
 
-		this.comentarioRepository.delete(comentarios);
+		this.comentarioRepository.deleteAll(comentarios);
 	}
 
 	@Override
 	public Tarefa obtemTarefaPorId(Long id) {
-		Tarefa tarefa = this.tarefaRepository.findOne(id);
+		Tarefa tarefa = this.tarefaRepository.getOne(id);
 		return tarefa;
 	}
 
@@ -82,7 +82,7 @@ public class TarefaServiceImpl implements TarefaService {
 	public UsuarioTarefaTo alocaTarefa(UsuarioTarefaTo usuarioTarefaTo) {
 		UsuarioTarefa ut = new UsuarioTarefa();
 
-		Tarefa tarefa = this.tarefaRepository.findOne(usuarioTarefaTo.getTarefa().getId());
+		Tarefa tarefa = this.tarefaRepository.getOne(usuarioTarefaTo.getTarefa().getId());
 
 		ut.setTarefa(tarefa);
 		ut.setRemoteUsuarioId(usuarioTarefaTo.getUsuario().getId());
@@ -96,8 +96,8 @@ public class TarefaServiceImpl implements TarefaService {
 
 	@Override
 	public UsuarioTarefa desalocaTarefa(Long id) {
-		UsuarioTarefa ut = this.usuarioTarefaRepository.findOne(id);
-		this.usuarioTarefaRepository.delete(id);
+		UsuarioTarefa ut = this.usuarioTarefaRepository.getOne(id);
+		this.usuarioTarefaRepository.deleteById(id);
 
 		return ut;
 
@@ -158,7 +158,7 @@ public class TarefaServiceImpl implements TarefaService {
 
 	@Override
 	public void removeUsuarioTarefa(Long id) {
-		this.usuarioTarefaRepository.delete(id);
+		this.usuarioTarefaRepository.deleteById(id);
 	}
 
 }
