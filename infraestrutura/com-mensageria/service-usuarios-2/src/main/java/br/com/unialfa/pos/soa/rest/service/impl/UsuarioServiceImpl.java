@@ -53,7 +53,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	@Transactional
 	public void removeUsuario(Long id) {
-		this.usuarioRepository.delete(id);
+		this.usuarioRepository.deleteById(id);
 
 		UsuarioChangedMessageTo to = UsuarioChangedMessageTo.builder().isRemoved(false).build();
 
@@ -62,7 +62,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Usuario obtemUsuarioPorId(Long id) {
-		Usuario usuario = this.usuarioRepository.findOne(id);
+		Usuario usuario = this.usuarioRepository.getOne(id);
 		return usuario;
 	}
 
