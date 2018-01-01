@@ -1,4 +1,4 @@
-package br.com.unialfa.pos.soa.infra.eureka;
+package br.com.unialfa.pos.soa.infra.mensageria;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

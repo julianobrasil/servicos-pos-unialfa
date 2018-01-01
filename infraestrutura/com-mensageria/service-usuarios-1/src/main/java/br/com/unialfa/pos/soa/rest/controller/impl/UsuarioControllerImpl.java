@@ -22,6 +22,7 @@ public class UsuarioControllerImpl implements UsuarioController {
 	private UsuarioService usuarioService;
 
 	public ResponseEntity<Page<Usuario>> getAll(Pageable pageable) {
+		System.out.println("fui chamado!");
 		Page<Usuario> usuarioPage = this.usuarioService.obtemTodosOsUsuarios(pageable);
 
 		return new ResponseEntity<Page<Usuario>>(usuarioPage,HttpStatus.OK);

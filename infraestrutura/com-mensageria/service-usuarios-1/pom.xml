@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>service-usuario-1</name>
-	<description>Serviço de Usuários - RESTFul</description>
+	<description>Servico de Usuarios - RESTFul</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -27,7 +27,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>
+				spring-cloud-starter-netflix-eureka-client
+			</artifactId>
 		</dependency>
 
 		<dependency>
