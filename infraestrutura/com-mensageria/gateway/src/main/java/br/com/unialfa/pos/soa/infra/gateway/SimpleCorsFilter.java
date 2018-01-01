@@ -17,9 +17,9 @@ import reactor.core.publisher.Mono;
 @Configuration
 public class SimpleCorsFilter {
 
-	private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN, Upgrade";
+	private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN, Upgrade, Referrer";
 	private static final String ALLOWED_METHODS = "GET, PUT, POST, DELETE, OPTIONS";
-	private static final String ALLOWED_ORIGIN = "*";
+	private static final String ALLOWED_ORIGIN = "http://localhost:4200";
 	private static final String MAX_AGE = "3600";
 
 	@Bean
@@ -33,7 +33,7 @@ public class SimpleCorsFilter {
 				headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, ALLOWED_METHODS);
 				headers.add(HttpHeaders.ACCESS_CONTROL_MAX_AGE, MAX_AGE);
 				headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, ALLOWED_HEADERS);
-//				headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
+				// headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
 				if (request.getMethod() == HttpMethod.OPTIONS) {
 					response.setStatusCode(HttpStatus.OK);
 					return Mono.empty();
